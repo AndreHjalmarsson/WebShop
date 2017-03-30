@@ -98,7 +98,12 @@ namespace webshop.Controllers
 
         public ActionResult AdminAccess()
         {
-            return View();
+            if (Session["Admin"] != null)
+            {
+                return View();
+            }
+
+            return RedirectToAction("index");
         }
     }
 }

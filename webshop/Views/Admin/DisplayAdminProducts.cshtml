@@ -12,6 +12,7 @@
         {
             <div class="col-sm-4">
                 <h2>@product.Name</h2> <br />
+                <h2>@product.Id</h2> <br />
                 <img style="width: 200px; height: 140px;" class="img-fluid" src="@Url.Content("~/Content/img/" + product.Image)" alt="@product.Name" /> <br>
                 <small>Price @product.Price</small> <br>
                 @using (Html.BeginForm("RemoveProductFromShop", "Admin"))

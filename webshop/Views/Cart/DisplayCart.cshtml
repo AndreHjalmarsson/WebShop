@@ -17,7 +17,7 @@
                 <small>Price @cart.Price</small> <br>
                 @using (Html.BeginForm("DeleteProduct", "Cart"))
                 {
-                    <input type="hidden" name="ProductId" value="@cart.ProductId" />
+                    <input type="hidden" name="CartProductId" value="@cart.Id" />
                     <input class="btn btn-default" type="submit" name="Delete" value="Delete product" />
                 }
             </div>

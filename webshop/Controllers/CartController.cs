@@ -27,7 +27,7 @@ namespace webshop.Controllers
 
             using (var connection = new SqlConnection(this.connectionString))
             {
-                Cart = connection.Query<CartModel>("SELECT * FROM Cart JOIN Products ON Products.Id = Cart.ProductId WHERE CartId = @CartId",
+                Cart = connection.Query<CartModel>("SELECT * FROM Products JOIN Cart ON Products.Id = Cart.ProductId WHERE CartId = @CartId",
                     new { CartId = CartId }).ToList();
 
                 if (Cart.Count == 0)
@@ -40,7 +40,7 @@ namespace webshop.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddProductToCart(int ProductId)
+        public ActionResult AddProductToCart(CartModel Cartproduct)
         {
             string CartId;
 
@@ -60,19 +60,19 @@ namespace webshop.Controllers
             using (var connection = new SqlConnection(this.connectionString))
             {
                 connection.Execute("INSERT INTO Cart (CartId, ProductId) VALUES (@CartId, @ProductId)",
-                    new { CartId = CartId, ProductId = ProductId });
+                    new { CartId = CartId, ProductId = Cartproduct.ProductId });
             }
 
             return Redirect(this.Request.UrlReferrer.AbsolutePath);
         }
 
         [HttpPost]
-        public ActionResult DeleteProduct(int ProductId)
+        public ActionResult DeleteProduct(int CartProductId)
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
-                connection.Execute("DELETE FROM Cart WHERE ProductId = @ProductId",
-                    new { ProductId = ProductId });
+                connection.Execute("DELETE FROM Cart WHERE Id = @CartProductId",
+                    new { CartProductId = CartProductId });
             }
 
                 return Redirect(this.Request.UrlReferrer.AbsolutePath);
