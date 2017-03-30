@@ -1,0 +1,26 @@
+﻿@model List<webshop.Models.CartModel>
+@{
+    ViewBag.Title = "DisplayCart";
+}
+
+<div class="text-center">
+    <h2>My Cart</h2>
+</div>
+<h4>@ViewBag.Message</h4>
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var cart in Model)
+        {
+            <div class="col-sm-4">
+                <h2>@cart.Name</h2> <br />
+                <img style="width: 200px; height: 140px;" class="img-fluid" src="@Url.Content("~/Content/img/" + cart.Image)" alt="@cart.Name" /> <br>
+                <small>Price @cart.Price</small> <br>
+                @using (Html.BeginForm("DeleteProduct", "Cart"))
+                {
+                    <input type="hidden" name="ProductId" value="@cart.ProductId" />
+                    <input class="btn btn-default" type="submit" name="Delete" value="Delete product" />
+                }
+            </div>
+        }
+    </div>
+</div>

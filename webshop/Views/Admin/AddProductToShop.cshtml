@@ -1,0 +1,23 @@
+﻿@model webshop.Models.ProductModel
+
+@{
+    ViewBag.Title = "Add a product";
+}
+
+<h2>Add an item</h2>
+
+<div class="container-fluid">
+    @using (Html.BeginForm("AddProductToShop", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.LabelFor(model => model.Name)
+        @Html.EditorFor(model => model.Name)<br>
+        @Html.LabelFor(model => model.Category)
+        @Html.DropDownListFor(model => model.Category, Model.CategoryList) <br>
+        @Html.LabelFor(model => model.Price)
+        @Html.EditorFor(model => model.Price)<br>
+        @Html.LabelFor(model => model.Image)
+        <input type="file" name="Image" />
+        <input type="submit" value="Add Item" class="btn btn-default" />
+    }
+</div>
+<h4>@TempData["Message"]</h4>

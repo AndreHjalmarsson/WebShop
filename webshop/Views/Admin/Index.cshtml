@@ -1,0 +1,16 @@
+﻿@model webshop.Models.ProductModel
+
+@{
+    ViewBag.Title = "Admin Authentication";
+}
+
+<h2>Admin Authentication</h2>
+
+@using (Html.BeginForm("AdminAccess", "Admin"))
+{
+    <input type="text" name="PostUsername">
+    <input type="password" name="PostPassword">
+    <input class="btn btn-default" type="submit" name="login" value="Log in" />
+}
+
+<h4>@TempData["Message"]</h4>

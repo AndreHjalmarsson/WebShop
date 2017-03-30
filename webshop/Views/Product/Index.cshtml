@@ -1,0 +1,30 @@
+﻿@model List<webshop.Models.ProductModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="text-center">
+    <h2>Products</h2>
+</div>
+<h4>@ViewBag.Message</h4>
+
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-sm-3">
+                <img style="width: 200px; height: 140px;" class="img-fluid" src="@Url.Content("~/Content/img/" + product.Image)" alt="@product.Name"/> <br>
+                <p class="text-center">@(product.Name)</p> <br />
+                <small class="text-center">Price @product.Price £</small> <br />
+                <a class="text-center" href="/product/get/@(product.Id)">View more info</a>
+
+                @using (Html.BeginForm("AddProductToCart", "Cart"))
+                {
+                    <input type="hidden" name="ProductId" value="@product.Id"/>
+                    <input class="btn btn-default" type="submit" value="Add to cart" />
+                }
+
+            </div>
+        }
+    </div>
+</div>
