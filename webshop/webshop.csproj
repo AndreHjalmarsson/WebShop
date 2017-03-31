@@ -215,6 +215,7 @@
     <Content Include="Views\Admin\DisplayAdminProducts.cshtml" />
     <Content Include="Views\Admin\AdminAccess.cshtml" />
     <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Checkout\VerifyCheckout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\" />

@@ -1,0 +1,13 @@
+﻿@model List<webshop.Models.CheckoutModel>
+@{
+    ViewBag.Title = "VerifyCheckout";
+}
+
+<h2>VerifyCheckout</h2>
+@foreach (var checkout in Model)
+{
+    <h3>@checkout.FirstName</h3>
+    <h3>@checkout.CartId</h3>
+    <h3>@checkout.Name</h3>
+}
+

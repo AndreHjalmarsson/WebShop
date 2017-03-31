@@ -8,6 +8,7 @@ namespace webshop.Models
 {
     public class CartModel : ProductModel
     {
+        new public int Id { get; internal set; }
         public string CartId { get; set; }
         public int ProductId { get; set; }
     }
