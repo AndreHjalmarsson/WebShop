@@ -16,23 +16,35 @@ namespace webshop.Controllers
 
         public ActionResult Index()
         {
+            List<CheckoutModel> Checking;
+            var CartId = Request.Cookies["cart"].Value;
+
             using (var connection = new SqlConnection(this.connectionString))
             {
-                return View();
+                Checking = connection.Query<CheckoutModel>("SELECT * FROM Members WHERE Members.CartNumber = @CartId",
+                    new { CartId = CartId }).ToList();
+
+                if (Checking.Count == 0)
+                {
+                    return View();
+                }
+
+                return RedirectToAction("VerifyCheckout");
             }
         }
 
         [HttpPost]
         public ActionResult VerifyCheckout(CheckoutModel CheckoutInfo)
         {
+   
             var CartId = Request.Cookies["cart"].Value;
 
-            using (var connection = new SqlConnection(this.connectionString))
+             using (var connection = new SqlConnection(this.connectionString))
             {
                 connection.Execute("INSERT INTO Members (CartNumber, FirstName, LastName, Email, Street, ZipCode, City) VALUES (@CartNumber, @FirstName, @Lastname, @Email, @Street, @ZipCode, @City)",
                     new {CartNumber = CartId, FirstName = CheckoutInfo.FirstName, LastName = CheckoutInfo.LastName, Email = CheckoutInfo.Email, Street = CheckoutInfo.Street, ZipCode = CheckoutInfo.ZipCode, City = CheckoutInfo.City });
 
-                return View();
+                return RedirectToAction("VerifyCheckout");
             }
         }
 
