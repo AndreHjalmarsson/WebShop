@@ -7,30 +7,17 @@
 
 @using (Html.BeginForm("VerifyCheckout", "Checkout"))
 {
-    <div>
         <label for="FirstName">First Name: </label>
         <input type="text" name="FirstName" />
-    </div>
-    <div>
         <label for="LastName">Last Name: </label>
         <input type="text" name="LastName" />
-    </div>
-    <div>
         <label for="Email">Email: </label>
         <input type="text" name="Email" />
-    </div>
-    <div>
         <label for="Street">Street: </label>
         <input type="text" name="Street" />
-    </div>
-    <div>
-        <label for="ZipCode">Postal Code: </label>
+        <label for="ZipCode">Zip Code: </label>
         <input type="text" name="ZipCode" />
-    </div>
-    <div>
         <label for="City">City: </label>
         <input type="text" name="City" />
-    </div>
-
-    <input type="Submit" value="Place Order" />
+        <input type="Submit" value="Create Order" />
 }
