@@ -44,13 +44,14 @@ namespace webshop.Controllers
                 connection.Execute("INSERT INTO Members (CartNumber, FirstName, LastName, Email, Street, ZipCode, City) VALUES (@CartNumber, @FirstName, @Lastname, @Email, @Street, @ZipCode, @City)",
                     new {CartNumber = CartId, FirstName = CheckoutInfo.FirstName, LastName = CheckoutInfo.LastName, Email = CheckoutInfo.Email, Street = CheckoutInfo.Street, ZipCode = CheckoutInfo.ZipCode, City = CheckoutInfo.City });
 
+
                 return RedirectToAction("VerifyCheckout");
             }
         }
 
-        [HttpGet]
         public ActionResult VerifyCheckout()
         {
+
             List<CheckoutModel> CheckoutInfo;
 
             var CartId = Request.Cookies["cart"].Value;

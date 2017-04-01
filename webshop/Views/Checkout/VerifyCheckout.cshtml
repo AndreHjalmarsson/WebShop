@@ -4,10 +4,12 @@
 }
 
 <h2>VerifyCheckout</h2>
-@foreach (var checkout in Model)
+@foreach (var MemberInfo in Model)
 {
-    <h3>@checkout.FirstName</h3>
-    <h3>@checkout.CartId</h3>
-
+    <h5>First Name: @MemberInfo.FirstName</h5>
+    <h5>Last Name: @MemberInfo.LastName</h5>
+    <h5>Street: @MemberInfo.Street</h5>
+    <h5>Zip Code: @MemberInfo.ZipCode</h5>
+    <h5>City: @MemberInfo.City</h5>
+    break;
 }
-
