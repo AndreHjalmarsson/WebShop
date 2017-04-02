@@ -3,9 +3,24 @@
     ViewBag.Title = "Get";
 }
 
-<h2>@Model.Name</h2> <br>
+<div class="text-center">
+    <h2>@Model.Name</h2>
+</div> <br>
 
-<p>@Model.Category</p> <br>
-<p>@Model.Price</p> <br>
-<p>@Model.Id</p>
-<p>@Model.Description</p>
+<div class="col-sm-6">
+    <img style="width: 400px; height: 280px;" class="img-fluid" src="@Url.Content("~/Content/img/" + Model.Image)" alt="Model.Name" /> <br>
+</div>
+<div class="col-sm-6">
+    <h3 style="text-align:center;">About</h3>
+    <p>@Model.Description</p>
+</div>
+
+<div class="text-center">
+    @using (Html.BeginForm("AddProductToCart", "Cart"))
+    {
+        <input type="hidden" name="ProductId" value="@Model.Id" />
+        <input type="hidden" name="ProductName" value="@Model.Name" />
+        <input class="btn btn-success" type="submit" value="Add to cart" />
+    }
+</div>
+
