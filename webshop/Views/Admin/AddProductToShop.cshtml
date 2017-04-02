@@ -4,7 +4,10 @@
     ViewBag.Title = "Add a product";
 }
 
-<h2>Add an item</h2>
+<div class="text-center">
+    <h2>Add to shop</h2>
+    <h4 style="color:green;">@TempData["Message"]</h4>
+</div>
 
 <div class="container-fluid">
     @using (Html.BeginForm("AddProductToShop", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -22,4 +25,3 @@
         <input type="submit" value="Add Item" class="btn btn-default" />
     }
 </div>
-<h4>@TempData["Message"]</h4>

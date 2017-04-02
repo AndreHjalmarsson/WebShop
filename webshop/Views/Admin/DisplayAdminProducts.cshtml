@@ -5,21 +5,24 @@
 
 <div class="text-center">
     <h2>Products in shop</h2>
+    <h4 style="color:red;">@TempData["Message"]</h4>
 </div>
 <div class="container-fluid">
     <div class="row">
         @foreach (var product in Model)
         {
-            <div class="col-sm-4">
-                <h2>@product.Name</h2> <br />
-                <h2>@product.Id</h2> <br />
-                <img style="width: 200px; height: 140px;" class="img-fluid" src="@Url.Content("~/Content/img/" + product.Image)" alt="@product.Name" /> <br>
-                <small>Price @product.Price</small> <br>
-                @using (Html.BeginForm("RemoveProductFromShop", "Admin"))
-                {
-                    <input type="hidden" name="Id" value="@product.Id" />
-                    <input class="btn btn-default" type="submit" name="Delete" value="Delete product" />
-                }
+            <div class="col">
+                <h4 style="display:inline-block">@product.Name</h4>
+                <h5 style="display:inline-block">@product.Category</h5>
+                <small>Price @product.Price</small>
+                <div class="form" style="display:inline-block">
+                    @using (Html.BeginForm("RemoveProductFromShop", "Admin"))
+                    {
+                        <input type="hidden" name="Id" value="@product.Id"/>
+                        <input type="hidden" name="ProductName" value="@product.Name"/>
+                        <input class="btn btn-default" type="submit" name="Delete" value="Delete product"/>
+                    }
+                </div>
             </div>
         }
 

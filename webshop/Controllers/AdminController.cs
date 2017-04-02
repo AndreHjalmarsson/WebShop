@@ -69,7 +69,7 @@ namespace webshop.Controllers
         }
 
         [HttpPost]
-        public ActionResult RemoveProductFromShop(int Id)
+        public ActionResult RemoveProductFromShop(int Id, string ProductName)
         {
             using (var connection = new SqlConnection(this.connectionString))
             {
@@ -77,6 +77,7 @@ namespace webshop.Controllers
                     new { Id = Id });
             }
 
+            TempData["Message"] = $"Removed {ProductName} from the shop.";
             return Redirect(this.Request.UrlReferrer.AbsolutePath);
         }
 
