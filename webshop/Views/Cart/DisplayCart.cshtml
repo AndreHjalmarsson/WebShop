@@ -19,7 +19,7 @@
                     <h4>@(cart.Name)</h4>
                     <p>@cart.Category</p>
                     <small class="text-center" style="color:green;">Price: $@cart.Price</small> <br>
-                    <a class="btn btn-default" href="/product/get/@(cart.Id)">More Info</a>
+                    <a class="btn btn-default" href="/product/get/@(cart.ProductId)">More Info</a>
                     <div class="form" style="display:inline-block">
                         @using (Html.BeginForm("DeleteProduct", "Cart"))
                         {
