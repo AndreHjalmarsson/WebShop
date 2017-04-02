@@ -8,15 +8,15 @@
     @using (Html.BeginForm("AddProductToShop", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.LabelFor(model => model.Name)
-        @Html.EditorFor(model => model.Name)
+        @Html.EditorFor(model => model.Name) <br><br>
         @Html.LabelFor(model => model.Category)
-        @Html.DropDownListFor(model => model.Category, Model.CategoryList)
+        @Html.DropDownListFor(model => model.Category, Model.CategoryList)<br><br>
         @Html.LabelFor(model => model.Description)
-        @Html.TextAreaFor(model => model.Description)
+        @Html.TextAreaFor(model => model.Description)<br><br>
         @Html.LabelFor(model => model.Price)
-        @Html.EditorFor(model => model.Price)
+        @Html.EditorFor(model => model.Price)<br><br>
         @Html.LabelFor(model => model.Image)
-        <input type="file" name="Image" />
+        <input type="file" name="Image" /><br><br>
         <input type="submit" value="Add Item" class="btn btn-success" />
     }
 </div>

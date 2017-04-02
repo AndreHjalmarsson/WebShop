@@ -36,13 +36,13 @@ namespace webshop.Controllers
         [HttpPost]
         public ActionResult VerifyCheckout(CheckoutModel CheckoutInfo)
         {
-   
+
             var CartId = Request.Cookies["cart"].Value;
 
-             using (var connection = new SqlConnection(this.connectionString))
+            using (var connection = new SqlConnection(this.connectionString))
             {
                 connection.Execute("INSERT INTO Members (CartNumber, FirstName, LastName, Email, Street, ZipCode, City) VALUES (@CartNumber, @FirstName, @Lastname, @Email, @Street, @ZipCode, @City)",
-                    new {CartNumber = CartId, FirstName = CheckoutInfo.FirstName, LastName = CheckoutInfo.LastName, Email = CheckoutInfo.Email, Street = CheckoutInfo.Street, ZipCode = CheckoutInfo.ZipCode, City = CheckoutInfo.City });
+                    new { CartNumber = CartId, FirstName = CheckoutInfo.FirstName, LastName = CheckoutInfo.LastName, Email = CheckoutInfo.Email, Street = CheckoutInfo.Street, ZipCode = CheckoutInfo.ZipCode, City = CheckoutInfo.City });
 
 
                 return RedirectToAction("VerifyCheckout");
@@ -63,6 +63,15 @@ namespace webshop.Controllers
 
                 return View(CheckoutInfo);
             }
+        }
+
+        public ActionResult OrderSent()
+        {
+            var ExCookie = new HttpCookie("cart");
+            ExCookie.Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies.Add(ExCookie);
+
+            return View();
         }
     }
 }
