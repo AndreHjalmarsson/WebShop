@@ -14,16 +14,18 @@
         {
             <div class="col-sm-3">
                 <img style="width: 200px; height: 140px;" class="img-fluid" src="@Url.Content("~/Content/img/" + product.Image)" alt="@product.Name"/> <br>
-                <p class="text-center">@(product.Name)</p> <br />
-                <small class="text-center">Price @product.Price £</small> <br />
-                <a class="text-center" href="/product/get/@(product.Id)">View more info</a>
+                <h4>@(product.Name)</h4>
+                <p>@product.Category</p> <br>
+                <small class="text-center" style="color:green;">Price: $@product.Price</small> <br>
+                <a class="btn btn-default" href="/product/get/@(product.Id)">More Info</a>
 
-                @using (Html.BeginForm("AddProductToCart", "Cart"))
-                {
-                    <input type="hidden" name="ProductId" value="@product.Id"/>
-                    <input class="btn btn-default" type="submit" value="Add to cart" />
-                }
-
+                <div class="form" style="display:inline-block">
+                        @using (Html.BeginForm("AddProductToCart", "Cart"))
+                        {
+                        <input type="hidden" name="ProductId" value="@product.Id" />
+                        <input class="btn btn-default" type="submit" value="Add to cart" />
+                        }
+                </div>
             </div>
         }
     </div>

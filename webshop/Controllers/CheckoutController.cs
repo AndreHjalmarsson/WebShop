@@ -58,7 +58,7 @@ namespace webshop.Controllers
 
             using (var connection = new SqlConnection(this.connectionString))
             {
-                CheckoutInfo = connection.Query<CheckoutModel>("SELECT * FROM Cart JOIN Members ON Cart.CartId = Members.CartNumber WHERE Cart.CartId = @CartId",
+                CheckoutInfo = connection.Query<CheckoutModel>("SELECT * FROM Cart JOIN Members ON Cart.CartId = Members.CartNumber JOIN Products ON Cart.ProductId = Products.Id WHERE Cart.CartId = @CartId",
                      new { CartId = CartId }).ToList();
 
                 return View(CheckoutInfo);

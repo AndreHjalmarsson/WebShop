@@ -13,3 +13,9 @@
     <h5>City: @MemberInfo.City</h5>
     break;
 }
+@foreach (var ProductInfo in Model)
+{
+    <h5>Products: @ProductInfo.Name</h5>
+    <h5>Category: @ProductInfo.Category</h5>
+    <h5>Price: @ProductInfo.Price</h5>
+}
