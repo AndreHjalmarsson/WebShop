@@ -4,11 +4,6 @@
     ViewBag.Title = "Add a product";
 }
 
-<div class="text-center">
-    <h2>Add to shop</h2>
-    <h4 style="color:green;">@TempData["Message"]</h4>
-</div>
-
 <div class="container-fluid">
     @using (Html.BeginForm("AddProductToShop", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {

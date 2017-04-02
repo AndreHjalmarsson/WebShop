@@ -3,19 +3,26 @@
     ViewBag.Title = "VerifyCheckout";
 }
 
-<h2>VerifyCheckout</h2>
-@foreach (var MemberInfo in Model)
-{
-    <h5>First Name: @MemberInfo.FirstName</h5>
-    <h5>Last Name: @MemberInfo.LastName</h5>
-    <h5>Street: @MemberInfo.Street</h5>
-    <h5>Zip Code: @MemberInfo.ZipCode</h5>
-    <h5>City: @MemberInfo.City</h5>
-    break;
-}
+<div class="text-center">
+    <h2>Checkout</h2>
+</div>
+
+<h3>Products</h3>
 @foreach (var ProductInfo in Model)
 {
-    <h5>Products: @ProductInfo.Name</h5>
-    <h5>Category: @ProductInfo.Category</h5>
-    <h5>Price: @ProductInfo.Price</h5>
+    <h4 style="display:inline-block">@ProductInfo.Name</h4>
+    <h5 style="display:inline-block">@ProductInfo.Category</h5>
+    <small>Price @ProductInfo.Price</small>
+}
+
+<h3>Shipping information</h3>
+@foreach (var MemberInfo in Model)
+{
+    <h5><b>First Name: </b>@MemberInfo.FirstName</h5>
+    <h5><b>Last Name: </b>@MemberInfo.LastName</h5>
+    <h5><b>Email: </b>@MemberInfo.Email</h5>
+    <h5><b>Street: </b>@MemberInfo.Street</h5>
+    <h5><b>Zip Code: </b>@MemberInfo.ZipCode</h5>
+    <h5><b>City: </b>@MemberInfo.City</h5>
+    break;
 }

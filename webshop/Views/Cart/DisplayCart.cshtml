@@ -14,21 +14,28 @@
         {
             foreach (var cart in Model)
             {
-                <div class="col">
-                    <h4 style="display:inline-block">@cart.Name</h4>
-                    <h5 style="display:inline-block">@cart.Category</h5>
-                    <small>Price @cart.Price</small>
+                <div class="col-sm-3">
+                    <img style="width: 200px; height: 140px;" class="img-fluid" src="@Url.Content("~/Content/img/" + cart.Image)" alt="@cart.Name" /> <br>
+                    <h4>@(cart.Name)</h4>
+                    <p>@cart.Category</p>
+                    <small class="text-center" style="color:green;">Price: $@cart.Price</small> <br>
+                    <a class="btn btn-default" href="/product/get/@(cart.Id)">More Info</a>
                     <div class="form" style="display:inline-block">
                         @using (Html.BeginForm("DeleteProduct", "Cart"))
                         {
                             <input type="hidden" name="CartProductId" value="@cart.Id" />
                             <input type="hidden" name="ProductName" value="@cart.Name" />
-                            <input class="btn btn-sm" type="submit" name="Delete" value="Delete product" />
+                            <input class="btn btn-danger" type="submit" name="Delete" value="Delete product" />
                         }
                     </div>
                 </div>
             }
-        <a class="btn btn-default" href="/checkout/index">Checkout</a>
         }
-    </div>
+        </div>
+        @if (Model != null && Model.Any())
+        {
+            <div class="text-center">
+                <a class="btn btn-warning" href="/checkout/index">Checkout</a>
+            </div>
+        }
 </div>
