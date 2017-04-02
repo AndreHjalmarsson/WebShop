@@ -4,7 +4,7 @@
 }
 
 <div class="text-center">
-    <h2>Products in shop</h2>
+    <h2 style="margin-bottom: 40px;">Products in shop</h2>
     <h4 style="color:red;">@TempData["Message"]</h4>
 </div>
 <div class="container-fluid">
@@ -14,13 +14,12 @@
             <div class="col">
                 <h4 style="display:inline-block">@product.Name</h4>
                 <h5 style="display:inline-block">@product.Category</h5>
-                <small>Price @product.Price</small>
-                <div class="form" style="display:inline-block">
+                <div class="form">
                     @using (Html.BeginForm("RemoveProductFromShop", "Admin"))
                     {
                         <input type="hidden" name="Id" value="@product.Id"/>
                         <input type="hidden" name="ProductName" value="@product.Name"/>
-                        <input class="btn btn-default" type="submit" name="Delete" value="Delete product"/>
+                        <input class="btn btn-danger" type="submit" name="Delete" value="Delete product"/>
                     }
                 </div>
             </div> <br>

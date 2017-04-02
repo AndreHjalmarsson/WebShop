@@ -8,12 +8,12 @@
 </div>
 
 <h3>Products</h3>
-@foreach (var ProductInfo in Model)
-{
-    <h4 style="display:inline-block">@ProductInfo.Name</h4>
-    <h5 style="display:inline-block">@ProductInfo.Category</h5>
-    <small>Price @ProductInfo.Price</small>
-}
+    @foreach (var ProductInfo in Model)
+    {
+        <h4 style="display:inline-block">@ProductInfo.Name</h4>
+        <h5 style="display:inline-block">@ProductInfo.Category</h5>
+        <small>Price @ProductInfo.Price</small> <br>
+    }
 
 <h3>Shipping information</h3>
 @foreach (var MemberInfo in Model)
@@ -26,3 +26,5 @@
     <h5><b>City: </b>@MemberInfo.City</h5>
     break;
 }
+
+<a class="btn btn-warning" style="margin-top: 40px;" href="/checkout/index">Send Order</a>

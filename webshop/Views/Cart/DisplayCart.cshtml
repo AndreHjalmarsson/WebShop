@@ -4,7 +4,7 @@
 }
 
 <div class="text-center">
-    <h2>My Cart</h2>
+    <h2 style="margin-bottom: 40px;">My Cart</h2>
     <h4 style="color:red;">@TempData["Message"]</h4>
     <h4>@ViewBag.Message</h4>
 </div>
@@ -35,7 +35,7 @@
         @if (Model != null && Model.Any())
         {
             <div class="text-center">
-                <a class="btn btn-warning" href="/checkout/index">Checkout</a>
+                <a class="btn btn-warning" style="margin-top: 40px;" href="/checkout/index">Checkout</a>
             </div>
         }
 </div>
