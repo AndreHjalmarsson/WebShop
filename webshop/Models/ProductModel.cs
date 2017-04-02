@@ -29,9 +29,11 @@ namespace webshop.Models
             {
                 return new List<SelectListItem>
                {
-                new SelectListItem { Text = "Electronics", Value = "Electronics"},
-                new SelectListItem { Text = "Sports", Value = "Sports"},
-                new SelectListItem { Text = "Clothing", Value = "Clothing"}
+                new SelectListItem { Text = "Laptop", Value = "Laptop"},
+                new SelectListItem { Text = "Mouse", Value = "Mouse"},
+                new SelectListItem { Text = "Keybord", Value = "Keybord"},
+                new SelectListItem { Text = "Headset", Value = "Headset"},
+                new SelectListItem { Text = "Speakers", Value = "Speakers"}
                };
             }
         }

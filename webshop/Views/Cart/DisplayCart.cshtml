@@ -5,25 +5,30 @@
 
 <div class="text-center">
     <h2>My Cart</h2>
+    <h4 style="color:red;">@TempData["Message"]</h4>
+    <h4>@ViewBag.Message</h4>
 </div>
-<h4>@ViewBag.Message</h4>
 <div class="container-fluid">
     <div class="row">
-        @foreach (var cart in Model)
+        @if (Model != null && Model.Any())
         {
-            <div class="col">
-                <h4 style="display:inline-block">@cart.Name</h4>
-                <h5 style="display:inline-block">@cart.Category</h5>
-                <small>Price @cart.Price</small>
-                <div class="form" style="display:inline-block">
-                    @using (Html.BeginForm("DeleteProduct", "Cart"))
-                     {
-                        <input type="hidden" name="CartProductId" value="@cart.Id" />
-                        <input class="btn btn-sm" type="submit" name="Delete" value="Delete product" />
-                     }
+            foreach (var cart in Model)
+            {
+                <div class="col">
+                    <h4 style="display:inline-block">@cart.Name</h4>
+                    <h5 style="display:inline-block">@cart.Category</h5>
+                    <small>Price @cart.Price</small>
+                    <div class="form" style="display:inline-block">
+                        @using (Html.BeginForm("DeleteProduct", "Cart"))
+                        {
+                            <input type="hidden" name="CartProductId" value="@cart.Id" />
+                            <input type="hidden" name="ProductName" value="@cart.Name" />
+                            <input class="btn btn-sm" type="submit" name="Delete" value="Delete product" />
+                        }
+                    </div>
                 </div>
-            </div>
+            }
+        <a class="btn btn-default" href="/checkout/index">Checkout</a>
         }
     </div>
-    <a class="btn btn-default" href="/checkout/index">Checkout</a>
 </div>

@@ -48,8 +48,8 @@ namespace webshop.Controllers
                     }
                 }
 
-                    connection.Execute("INSERT INTO Products(Name, Category, Price, Image) values(@Name, @Category, @Price, @Image)", 
-                    new { Name = product.Name, Category = product.Category, Price = product.Price, Image = product.Image });
+                    connection.Execute("INSERT INTO Products(Name, Category, Description, Price, Image) values(@Name, @Category, @Description, @Price, @Image)", 
+                    new { Name = product.Name, Category = product.Category, Description = product.Description, Price = product.Price, Image = product.Image });
             }
 
             TempData["Message"] = $"Added following product to the shop: {product.Name}";
